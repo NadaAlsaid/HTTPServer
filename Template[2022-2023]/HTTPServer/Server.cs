@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -96,7 +96,7 @@ namespace HTTPServer
                 // Check for bad request
                 if (request == null || !request.ParseRequest())
                 {
-                    return new Response(StatusCode.BadRequest, "text/plain", "Bad Request", null);
+                    return new Response(StatusCode.BadRequest, "text/html", LoadDefaultPage(Configuration.BadRequestDefaultPageName), null);
                 }
 
                 // Map the relativeURI in request to get the physical path of the resource
@@ -107,7 +107,7 @@ namespace HTTPServer
                 if (redirect != String.Empty)
                 {
                     redirect = redirect.Remove(redirect.Length - 1 , 1);
-                    return new Response(StatusCode.Redirect, "text/html", File.ReadAllText(Configuration.RootPath + "\\" + redirect), redirect);
+                    return new Response(StatusCode.Redirect, "text/html", LoadDefaultPage(redirect), redirect);
                 }
                 // Check file exists
                 if (!File.Exists(filePath))
@@ -127,7 +127,7 @@ namespace HTTPServer
                 Logger.LogException(ex);
 
                 // In case of exception, return Internal Server Error
-                return new Response(StatusCode.InternalServerError, "text/plain", "Internal Server Error", null);
+                return new Response(StatusCode.InternalServerError, "text/html", LoadDefaultPage(Configuration.InternalErrorDefaultPageName), null);
             }
         }
 
