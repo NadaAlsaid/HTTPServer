@@ -1,5 +1,13 @@
 <h1 align = "center">HTTPServer</h1>
 
+It's Implementation for a part of the HTTP protocol.
+- Threaded (multiple clients)
+- GET only.
+- Error handling
+  - Page Not found
+  - Bad Request
+  - Redirection
+  - Internal Server Error
 
 # Collaborators:
 - <a href="https://github.com/NadaAlsaid">Nada Alsaid</a><br>
