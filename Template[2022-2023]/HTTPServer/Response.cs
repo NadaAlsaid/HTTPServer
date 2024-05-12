@@ -6,14 +6,7 @@ using System.IO;
 
 namespace HTTPServer
 {
-    // الاسئلة :
-    /*
-     * create request sting  المقصود بيه ايه
-     *  statusline  -> 
-     *  المفروض اديله لينك الويب سايت ولا اسم الايرور بس ؟ وايه رساله 200 ؟
-     * 
-     * 
-     */
+
     public enum StatusCode
     {
         OK = 200,
